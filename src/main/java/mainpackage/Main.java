@@ -9,7 +9,7 @@ import java.util.Arrays;
  */
 public class Main {
     public static void main(String[] args) {
-        if (args.length < 3) {
+        if (args.length != 3) {
             System.out.println("Expected 3 arguments: <string> <int> <int>");
             System.out.println("but got: " + Arrays.toString(args));
         }
