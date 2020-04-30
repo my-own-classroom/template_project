@@ -25,4 +25,6 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
     - name: run io tests
-      run: ./gradlew run string 1 3
+      run: |
+        ./gradlew fatJar
+        java -jar build/libs/template_project-all-0.8.jar string 1 4
