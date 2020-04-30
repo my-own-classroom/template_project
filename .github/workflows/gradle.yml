@@ -25,6 +25,6 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
     - name: PMD Source Code Analyzer Action
-      uses: sfdx-actions/setup-pmd@v1
+      uses: mcanog/setup-pmd@9.2
     - name: run pmd analysis
       run: pmd -d $GITHUB_WORKSPACE/src/main/java -R $GITHUB_WORKSPACE/config/checkstyle/checkstyle.xml -f text
