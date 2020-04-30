@@ -24,3 +24,5 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew build
+    - name: run io tests
+      run: java -jar $GITHUB_WORKSPACE/build/libs/template_project-0.8.jar string 1 3
