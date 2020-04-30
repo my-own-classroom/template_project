@@ -28,6 +28,6 @@ jobs:
       run: |
           wget https://github.com/pmd/pmd/releases/download/pmd_releases%2F6.23.0/pmd-bin-6.23.0.zip
           unzip pmd-bin-6.23.0.zip
-          alias pmd="$HOME/pmd-bin-6.23.0/bin/run.sh pmd"
+          alias pmd="pmd-bin-6.23.0/bin/run.sh pmd"
     - name: run pmd analysis
       run: pmd -d $GITHUB_WORKSPACE/src/main/java -R $GITHUB_WORKSPACE/config/checkstyle/checkstyle.xml -f text
