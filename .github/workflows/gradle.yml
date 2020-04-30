@@ -24,10 +24,3 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew build
-    - name: PMD Source Code Analyzer Action
-      run: |
-          wget https://github.com/pmd/pmd/releases/download/pmd_releases%2F6.23.0/pmd-bin-6.23.0.zip
-          unzip pmd-bin-6.23.0.zip
-          chmod +x pmd-bin-6.23.0/bin/run.sh
-    - name: run pmd analysis
-      run: pmd-bin-6.23.0/bin/run.sh pmd -d $GITHUB_WORKSPACE/src/main/java -R rulesets/java/quickstart.xml -f text
