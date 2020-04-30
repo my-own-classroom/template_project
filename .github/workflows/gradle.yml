@@ -30,4 +30,4 @@ jobs:
           unzip pmd-bin-6.23.0.zip
           chmod +x pmd-bin-6.23.0/bin/run.sh
     - name: run pmd analysis
-      run: pmd-bin-6.23.0/bin/run.sh pmd -d $GITHUB_WORKSPACE/src/main/java -R $GITHUB_WORKSPACE/config/checkstyle/checkstyle.xml -f text
+      run: pmd-bin-6.23.0/bin/run.sh pmd -d $GITHUB_WORKSPACE/src/main/java -R rulesets/java/quickstart.xml -f text
