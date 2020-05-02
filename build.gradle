@@ -1,5 +1,5 @@
 group 'githubclassroom'
-version '0.8'
+version '0.9'
 
 apply plugin: 'java'
 
@@ -17,14 +17,30 @@ checkstyleTest {
     source ='src/test/java'
 }
 
-apply plugin: 'findbugs'
-findbugs {
-    ignoreFailures = false
-    toolVersion = "3.0.1"
-    sourceSets=[sourceSets.main]
-    excludeFilter = file("config/findbugs/excludeFilter.xml")
-    reportsDir = file("$project.buildDir/reports/findbugs" as Object)
-    effort = "max"
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "gradle.plugin.com.github.spotbugs.snom:spotbugs-gradle-plugin:4.0.8"
+    }
+}
+
+apply plugin: "com.github.spotbugs"
+
+spotbugs {
+    toolVersion = '4.0.2'
+    ignoreFailures = true
+    effort = 'max'
+    showProgress = true
+}
+
+sourceSets {
+    main {
+        java.srcDirs = ['src/main/java']
+    }
 }
 
 repositories {
@@ -33,16 +49,14 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
-}
-
-dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
+    spotbugsPlugins 'com.h3xstream.findsecbugs:findsecbugs-plugin:1.10.1'
 }
 
 task fatJar(type: Jar) {
     manifest {
-        attributes 'Implementation-Title': 'Gradle Jar File Example',
+        attributes 'Implementation-Title': 'Gradle Jar File',
                 'Implementation-Version': version,
                 'Main-Class': 'mainpackage.Main'
     }
@@ -50,3 +64,4 @@ task fatJar(type: Jar) {
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
     with jar
 }
+
