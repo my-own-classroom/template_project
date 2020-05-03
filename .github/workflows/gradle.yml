@@ -35,11 +35,8 @@ jobs:
         ./gradlew fatJar
         java -jar build/libs/*-all-0.9.jar string 1 4
     - name: Check directories content
-      run: |
-        ls -la $GITHUB_WORKSPACE/
-        ls -la $GITHUB_WORKSPACE/build/
-        ls -la $GITHUB_WORKSPACE/build/reports/
+      run: zip -r $GITHUB_WORKSPACE/build/reports.zip $GITHUB_WORKSPACE/build/reports
     - uses: actions/upload-artifact@v2
       with:
         name: code-coverage-report
-        path: $GITHUB_WORKSPACE/build/reports/*
+        path: $GITHUB_WORKSPACE/build/reports.zip
