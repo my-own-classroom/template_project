@@ -34,7 +34,7 @@ jobs:
       run: |
         ./gradlew fatJar
         pip install pytest
-        pytest $GITHUB_WORKSPACE/test.py -v
+        python -m pytest $GITHUB_WORKSPACE/test.py -v
     - name: Check directories content
       run: |
         zip -r $GITHUB_WORKSPACE/build/reports.zip $GITHUB_WORKSPACE/build/reports
