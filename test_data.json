@@ -1,5 +1,5 @@
 {
-  "file_list": ["$GITHUB_WORKSPACE/build/lib/app-all-1.0.jar"],
+  "file_list": ["build/libs/app-all-1.0.jar"],
   "test1":
   {
 	  "input": ["string","1","2"],
