@@ -29,7 +29,13 @@ public class MainTests {
 
     @Test
     public void testOK() {
-        Main.main("abcde 1 2".split(" "));
+        Main.main("abcd 1 2".split(" "));
         assertEquals("b\n", outContent.toString());
+    }
+
+    @Test
+    public void testnull() {
+        Main.main("abcd -1 2".split(" "));
+        assertEquals("\n", outContent.toString());
     }
 }

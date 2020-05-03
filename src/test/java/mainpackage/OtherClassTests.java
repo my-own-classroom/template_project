@@ -32,6 +32,6 @@ public class OtherClassTests {
     @Test
     public void testempty() {
         OtherClass otherClass = new OtherClass();
-        assertEquals(otherClass.substring("", 0, 1), "");
+        assertEquals(otherClass.substring(" ", 0, 1), " ");
     }
 }

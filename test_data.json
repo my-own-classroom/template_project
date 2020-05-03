@@ -1,0 +1,18 @@
+{
+  "file_list": ["template_project-all-0.9.jar"],
+  "test1":
+  {
+	  "input": ["string","1","2"],
+	  "output": ["t"]
+  },
+  "test2":
+  {
+	  "input": ["string","1","2"],
+	  "output": ["t"]
+  },
+  "test3":
+  {
+	  "input": ["string","-1","2"],
+	  "output": [""]
+  }
+}
