@@ -33,7 +33,7 @@ jobs:
     - name: run io tests
       run: |
         ./gradlew fatJar
-        pip install -U pytest
+        pip install pytest
         pytest $GITHUB_WORKSPACE/test.py -v
     - name: Check directories content
       run: |
