@@ -36,10 +36,7 @@ jobs:
         pip install pytest
         cd $GITHUB_WORKSPACE/
         python -m pytest -v --name build/libs/app-all-1.0.jar --json_file test_data.json test.py
-    - name: Make artifact Check directories content
-      run: |
-        zip -r build/reports.zip build/reports/
     - uses: actions/upload-artifact@v1
       with:
         name: code-coverage-report
-        path: build/reports.zip
+        path: build/reports/
