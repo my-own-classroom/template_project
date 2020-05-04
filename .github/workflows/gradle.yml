@@ -33,7 +33,8 @@ jobs:
     - name: run io tests
       run: |
         ./gradlew fatJar
-        java -jar build/libs/*-all-0.9.jar string 1 4
+        pip install pytest
+        python -m pytest $GITHUB_WORKSPACE/test.py -v
     - name: Check directories content
       run: |
         zip -r $GITHUB_WORKSPACE/build/reports.zip $GITHUB_WORKSPACE/build/reports
