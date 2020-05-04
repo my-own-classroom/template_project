@@ -34,12 +34,13 @@ jobs:
       run: |
         ./gradlew fatJar
         pip install pytest
-        python -m pytest $GITHUB_WORKSPACE/test.py -v
-    - name: Check directories content
+        cd $GITHUB_WORKSPACE/
+        python -m pytest -v --name build/libs/app-all-1.0.jar --json_file test_data.json test.py
+    - name: Make artifact Check directories content
       run: |
         zip -r $GITHUB_WORKSPACE/build/reports.zip $GITHUB_WORKSPACE/build/reports
         ls -la $GITHUB_WORKSPACE/build/
-    - uses: actions/upload-artifact@v2
+    - uses: actions/upload-artifact@v1
       with:
         name: code-coverage-report
         path: $GITHUB_WORKSPACE/build/
