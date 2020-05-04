@@ -38,9 +38,8 @@ jobs:
         python -m pytest -v --name build/libs/app-all-1.0.jar --json_file test_data.json test.py
     - name: Make artifact Check directories content
       run: |
-        zip -r build/reports.zip build/reports
-        ls -la build/
+        zip -r build/reports.zip build/reports/
     - uses: actions/upload-artifact@v1
       with:
         name: code-coverage-report
-        path: build/
+        path: build/reports.zip
