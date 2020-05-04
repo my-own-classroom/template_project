@@ -37,7 +37,17 @@ spotbugs {
     showProgress = true
 }
 
-
+spotbugsMain {
+    reports {
+        html {
+            enabled = true
+            stylesheet = 'fancy-hist.xsl'
+        }
+        xml {
+            enabled = false
+        }
+    }
+}
 
 sourceSets {
     main {
@@ -51,25 +61,28 @@ jacocoTestCoverageVerification {
     violationRules {
         rule {
             limit {
-                minimum = 0.5
-            }
-        }
-
-        rule {
-            enabled = false
-            element = 'CLASS'
-            includes = ['org.gradle.*']
-
-            limit {
                 counter = 'LINE'
-                value = 'TOTALCOUNT'
-                maximum = 0.3
+                value = 'COVEREDRATIO'
+                minimum = 0.8
+            }
+            limit {
+                counter = 'BRANCH'
+                value = 'COVEREDRATIO'
+                minimum = 0.6
             }
         }
     }
 }
 
+apply plugin: 'pmd'
 
+pmd {
+    consoleOutput = false
+    toolVersion = "6.21.0"
+    rulePriority = 5
+    ignoreFailures = true
+    ruleSets = ["category/java/errorprone.xml", "category/java/bestpractices.xml", "category/java/codestyle.xml"]
+}
 
 repositories {
     mavenCentral()
@@ -85,7 +98,6 @@ dependencies {
 task fatJar(type: Jar) {
     manifest {
         attributes 'Implementation-Title': 'Gradle Jar File',
-                'Implementation-Version': version,
                 'Main-Class': 'mainpackage.Main'
     }
     baseName = project.name + '-all'
