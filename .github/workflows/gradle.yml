@@ -38,8 +38,8 @@ jobs:
         python -m pytest -v --name build/libs/app-all-1.0.jar --json_file test_data.json test.py
     - name: Make artifact Check directories content
       run: |
-        zip -r $GITHUB_WORKSPACE/build/reports.zip $GITHUB_WORKSPACE/build/reports
-        ls -la $GITHUB_WORKSPACE/build/
+        zip -r build/reports.zip $GITHUB_WORKSPACE/build/reports
+        ls -la build/
     - uses: actions/upload-artifact@v1
       with:
         name: code-coverage-report
