@@ -47,7 +47,7 @@ jobs:
         name: code-coverage-report
         path: build/reports/
     - name: webhook test
-      uses: muinmomin/webhook-action@v1.0.0
-      with:
-        url: "https://ya.ru"
+      uses: joelwmale/webhook-action@master
+      env:
+        WEBHOOK_URL: "https://ya.ru"
         data: "{'command': '$GITHUB_WORKSPACE'}"
