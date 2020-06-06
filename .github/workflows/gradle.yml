@@ -36,11 +36,15 @@ jobs:
         pip install pytest
         cd $GITHUB_WORKSPACE/
         python -m pytest -v --name build/libs/app-all-1.0.jar --json_file test_data.json test.py
+    - name: upload fatjar
+      uses: actions/upload-artifact@v1
+      with:
+        name: fatjar
+        path: build/libs/app-all-1.0.jar
     - name: Download a Build Artifact
       uses: actions/download-artifact@v2
       with:
         name: fatjar
-        path: build/libs/app-all-1.0.jar
     - name: upload reports
       uses: actions/upload-artifact@v1
       with:
